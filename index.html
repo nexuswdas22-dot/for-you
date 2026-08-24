@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open This Web</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe6f0 0%, #fff0f5 100%);
+      color: #4a4a4a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 12px 32px rgba(255, 102, 196, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .page.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #d63384;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 260px;
+      margin-top: 16px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, #ff66c4 0%, #ff3399 100%);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 51, 153, 0.35);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+    }
+
+    .btn .btn-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(255, 51, 153, 0.45);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 12px rgba(255, 51, 153, 0.3);
+    }
+
+    .flower-img {
+      display: inline-block;
+      font-size: 90px;
+      line-height: 1;
+      cursor: pointer;
+      margin: 15px 0;
+      transition: transform 0.4s ease;
+      animation: float 3s ease-in-out infinite;
+      user-select: none;
+    }
+
+    .flower-img:hover {
+      transform: scale(1.2) rotate(8deg);
+    }
+
+    .surat {
+      display: none;
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-top: 20px;
+      text-align: left;
+      border: 1px solid #ffe6f0;
+      animation: fadeIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .surat p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4a4a4a;
+    }
+
+    .surat b {
+      color: #d63384;
+      font-size: 1.05rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="page1" class="page active">
+    <h2>Halo! Ada sesuatu yang ingin aku bilang...</h2>
+    <button class="btn" onclick="nextPage()">Lanjut <span class="btn-icon">➡️</span></button>
+  </div>
+
+  <div id="page2" class="page">
+    <h2>Klik bunganya ya!</h2>
+    <div class="flower-img" onclick="showLetter()">🌸</div>
+    
+    <div id="surat" class="surat">
+      <p>
+        <b>Untuk Gina X ANIMASI 1</b><br><br>
+        Hai! Aku sering melihatmu di sekolah, dan sejujurnya… jantungku berdebar kencang setiap kali kita berpapasan. Kurasa sudah waktunya untuk mengatakan ini—aku menyukaimu sejak MPLS.<br><br>
+        Aku tidak meminta apa-apa, aku hanya ingin jujur tentang perasaanku. Meskipun kita belum pernah bersosialisasi, aku berharap setelah kamu membaca ini, kita bisa saling mengenal satu sama lain.<br><br>
+        Sejujurnya aku malu sekali mengungkapkan ini… karena aku selalu berpikir takut kamu risih dan banyak hal lain yang bikin aku ragu sendiri.<br><br>
+        Mungkin itu saja dariku. Terima kasih sudah mau membaca pesanku…<br><br>
+        – <i>“NexusSky”</i>
+      </p>
+      <div style="text-align: center;">
+        <button class="btn" onclick="showThanks()">Lanjut <span class="btn-icon">➡️</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="page3" class="page">
+    <h2>Terima kasih... ✉️💗</h2>
+    <div class="surat" style="display: block; text-align: center;"> 
+      <p style="margin-bottom: 10px;">
+        Kamu adalah alasan kenapa aku selalu semangat berangkat sekolah.
+        Terima kasih sudah hadir dan membuat hariku lebih berwarna ✨
+      </p>
+      
+      <button class="btn" onclick="goWA()"><span class="btn-icon">💬</span> Click This Button</button>
+      <br>
+      <button class="btn" onclick="goHome()"><span class="btn-icon">🔄</span> Kembali ke Awal</button>
+    </div>
+  </div>
+
+  <script>
+    function switchPage(hideId, showId) {
+      const hideEl = document.getElementById(hideId);
+      const showEl = document.getElementById(showId);
+
+      hideEl.classList.remove("active");
+      setTimeout(() => {
+        showEl.classList.add("active");
+      }, 200);
+    }
+
+    function nextPage() {
+      switchPage("page1", "page2");
+    }
+
+    function showLetter() {
+      document.getElementById("surat").style.display = "block";
+    }
+
+    function showThanks() {
+      switchPage("page2", "page3");
+    }
+
+    function goHome() {
+      document.getElementById("surat").style.display = "none";
+      switchPage("page3", "page1");
+    }
+
+    function goWA() {
+      window.location.href = "https://wa.me/62";
+    }
+  </script>
+
+</body>
+</html>
